@@ -108,7 +108,8 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
     {
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = $this->full_url($_SERVER);
-        $headers = getallheaders();
+        $this->log('mcash_woocommerce_callback() $method = ' . $method );
+        $this->log('mcash_woocommerce_callback() $uri = ' . $uri );
         
         @ob_clean();
         $body = file_get_contents('php://input');
@@ -125,11 +126,17 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
             exit;
         }
         
-        if (! $this->mcash_client->valid_signature($method, $uri, $headers, $body) ){
-            header('HTTP/1.1 401 Unauthorized');
-            exit;
+        if ( function_exists('getallheaders') ) 
+        {
+            $this->log('mcash_woocommerce_callback() getallheaders start');
+            $headers = getallheaders();
+            $this->log('mcash_woocommerce_callback() headers = ' . print_r($headers, true)); 
+            if (! $this->mcash_client->valid_signature($method, $uri, $headers, $body) ){
+                header('HTTP/1.1 401 Unauthorized');
+                exit;
+            }
         }
-        
+
         if ($payload->meta->id ) {
             $this->get_payment_outcome($payload->meta->uri);
             header('HTTP/1.1 204 No Content');
