@@ -1,0 +1,242 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: mCASH - WooCommerce Gateway v0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-02-27 13:58:07+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: classes/mcash-woocommerce.php:19
+#: classes/mcash-woocommerce.php:21
+#@ mcash-woocommerce
+msgid "mCASH"
+msgstr "mCASH"
+
+#: classes/mcash-woocommerce.php:20
+#@ mcash-woocommerce
+msgid "mCASH Payment Gateway Plug-in for WooCommerce"
+msgstr "mCASH Payment Gateway Plug-in für WooCommerce"
+
+#: classes/mcash-woocommerce.php:173
+#@ mcash-woocommerce
+msgid "Enable / Disable"
+msgstr "Aktivieren / Deaktivieren"
+
+#: classes/mcash-woocommerce.php:174
+#@ mcash-woocommerce
+msgid "Enable this payment gateway"
+msgstr "Aktivieren / Inaktivieren"
+
+#: classes/mcash-woocommerce.php:179
+#@ mcash-woocommerce
+msgid "Title"
+msgstr "Titel"
+
+#: classes/mcash-woocommerce.php:181
+#@ mcash-woocommerce
+msgid "Payment title the customer will see during the checkout process."
+msgstr "Titel sichtbar für den Kunden während des Zahlungsvorgangs"
+
+#: classes/mcash-woocommerce.php:185
+#@ mcash-woocommerce
+msgid "Description"
+msgstr "Beschreibung"
+
+#: classes/mcash-woocommerce.php:187
+#@ mcash-woocommerce
+msgid "Payment description the customer will see during the checkout process."
+msgstr "Beschreibung sichtbar für den Kunden während des Zahlungsvorgangs"
+
+#: classes/mcash-woocommerce.php:188
+#, php-format
+#@ mcash-woocommerce
+msgid "Pay with %s"
+msgstr "Zahlung mit %s"
+
+#: classes/mcash-woocommerce.php:192
+#@ mcash-woocommerce
+msgid "merchant id"
+msgstr "Händler-ID"
+
+#: classes/mcash-woocommerce.php:194
+#, php-format
+#@ mcash-woocommerce
+msgid "This is the merchant id that was provided by mcash.no when you signed up for an account at %shttps://my.mca.sh/mssp/%s ."
+msgstr "Händler-ID, die von mCASH während der Eröffnung eines Händlerkontos im mCASH-Portal  %shttps://my.mca.sh/mssp/%s bereit gestellt wurde."
+
+#: classes/mcash-woocommerce.php:197
+#@ mcash-woocommerce
+msgid "merchant user id"
+msgstr "Händler-User-ID"
+
+#: classes/mcash-woocommerce.php:199
+#, php-format
+#@ mcash-woocommerce
+msgid "The merchant user created by you at %shttps://my.mca.sh/mssp/%s ."
+msgstr "Händler-User-ID, die von Ihnen im mCASH-Portal %shttps://my.mca.sh/mssp/%s erzeugt wurde."
+
+#: classes/mcash-woocommerce.php:202
+#: classes/mcash-woocommerce.php:203
+#@ mcash-woocommerce
+msgid "Generate new RSA keys"
+msgstr "Neuen RSA-Schlüssel erzeugen"
+
+#: classes/mcash-woocommerce.php:205
+#, php-format
+#@ mcash-woocommerce
+msgid "If set to \"yes\", new keys will be generated, and you need to copy the public key to %shttps://my.mca.sh/mssp/%s ."
+msgstr "Wenn Einstellung \“ja”\ aktiviert ist, wird eine neue Verschlüsselung erzeugt. Der öffentliche Schlüssel muss in das mCASH-Portal kopiert werden: %shttps://my.mca.sh/mssp/%s ."
+
+#: classes/mcash-woocommerce.php:209
+#@ mcash-woocommerce
+msgid "Private RSA key"
+msgstr "Privater RSA-Schlüssel"
+
+#: classes/mcash-woocommerce.php:211
+#@ mcash-woocommerce
+msgid "Your private RSA key. Keep it secret."
+msgstr "Privater RSA-Schlüssel - muss geheim gehalten werden"
+
+#: classes/mcash-woocommerce.php:215
+#@ mcash-woocommerce
+msgid "Public RSA key"
+msgstr "Öffenticher RSA-Schlüssel"
+
+#: classes/mcash-woocommerce.php:217
+#, php-format
+#@ mcash-woocommerce
+msgid "Your public RSA key. Copy this to the corresponding field for your merchant user at %shttps://my.mca.sh/mssp/%s ."
+msgstr "Öffentlicher RSA-Schlüssel - muss in das entsprechende Feld Ihres Händer-Users kopiert werden: %shttps://my.mca.sh/mssp/%s ."
+
+#: classes/mcash-woocommerce.php:221
+#@ mcash-woocommerce
+msgid "autocapture"
+msgstr "Automatischer Capture"
+
+#: classes/mcash-woocommerce.php:222
+#@ mcash-woocommerce
+msgid "Capture an authorized payment automatically"
+msgstr "Automatischer Abschluss (Capture) einer vorautorisierten Zahlung"
+
+#: classes/mcash-woocommerce.php:224
+#@ mcash-woocommerce
+msgid "Capture an authorized payment automatically. If not set, capture needs to be done in the order view."
+msgstr "Automatischer Abschluss (Capture) einer vorautorisierten Zahlung. Falls dieses Feature nicht aktiviert ist, müssen alle vorautorisierten Zahlungen manuell in der Bestellansicht mit einem Capture abgeschlossen werden."
+
+#: classes/mcash-woocommerce.php:228
+#@ mcash-woocommerce
+msgid "Test Mode"
+msgstr "Testmodus"
+
+#: classes/mcash-woocommerce.php:229
+#@ mcash-woocommerce
+msgid "Enable Test Mode"
+msgstr "Aktivieren testmodus"
+
+#: classes/mcash-woocommerce.php:231
+#@ mcash-woocommerce
+msgid "Place the payment gateway in test mode."
+msgstr ""
+
+#: classes/mcash-woocommerce.php:235
+#@ mcash-woocommerce
+msgid "Log Mode"
+msgstr ""
+
+#: classes/mcash-woocommerce.php:236
+#@ mcash-woocommerce
+msgid "Enable logging"
+msgstr ""
+
+#: classes/mcash-woocommerce.php:241
+#@ mcash-woocommerce
+msgid "testbed_token"
+msgstr "testbed_token"
+
+#: classes/mcash-woocommerce.php:243
+#, php-format
+#@ mcash-woocommerce
+msgid "When using mCASH %stest environment%s , this token needs to be set"
+msgstr ""
+
+#: classes/mcash-woocommerce.php:247
+#@ mcash-woocommerce
+msgid "test_server"
+msgstr "test_server"
+
+#: classes/mcash-woocommerce.php:251
+#@ default
+msgid "Only concerns developers"
+msgstr "Nur Bedenken Entwickler"
+
+#: classes/mcash-woocommerce.php:291
+#@ mcash-woocommerce
+msgid "Gateway Disabled"
+msgstr ""
+
+#: classes/mcash-woocommerce.php:291
+#@ mcash-woocommerce
+msgid "mCASH does not support your store currency."
+msgstr "mCASH Zahlungen werden momentan nicht in der Währung ihres Webshops unterstützt."
+
+#: classes/mcash-woocommerce.php:347
+#@ mcash-woocommerce
+msgid "mCASH manual capture completed"
+msgstr "mCASH manueller Capture erfolgreich abgeschlossen"
+
+#: classes/mcash-woocommerce.php:353
+#: classes/mcash-woocommerce.php:354
+#@ mcash-woocommerce
+msgid "mCASH manual capture failed"
+msgstr "mCASH manueller Capture fehlgeschlagen"
+
+#: classes/mcash-woocommerce.php:372
+#, php-format
+#@ default
+msgid "<strong>%s</strong> is enabled and WooCommerce is not forcing the SSL certificate on your checkout page. Please ensure that you have a valid SSL certificate and that you are <a href=\"%s\">forcing the checkout pages to be secured.</a>"
+msgstr "<strong>%s</strong> ist aktiviert, doch das notwendige SSL-Sertifikat zur Sicherung Ihrer Bezahlungslösung wird nicht von WooCommerce bereit gestellt. Bitte versichern Sie sich deshalb, ob Sie über ein gültiges SSL-Sertifikat verfügen und Ihrer Bezahlungslösung hiermit gesichert ist. <a href=\"%s\"> </a>"
+
+#: classes/mcash-woocommerce.php:434
+#@ mcash-woocommerce
+msgid "mCASH payment status : auth "
+msgstr "mCASH Transaktionsstatus: auth "
+
+#: classes/mcash-woocommerce.php:437
+#@ mcash-woocommerce
+msgid "mCASH automatic capture completed"
+msgstr "mCASH automatischer Capture erfolgreich abgeschlossen"
+
+#: classes/mcash-woocommerce.php:441
+#@ mcash-woocommerce
+msgid "mCASH automatic capture failed"
+msgstr "mCASH automatischer Capture fehlgeschlagen"
+
+#: classes/mcash-woocommerce.php:442
+#@ mcash-woocommerce
+msgid "mCASH capture failed"
+msgstr "mCASH Capture fehlgeschlagen"
+
+#: classes/mcash-woocommerce.php:465
+#@ mcash-woocommerce
+msgid "We are currently experiencing problems trying to connect to this payment gateway. Sorry for the inconvenience."
+msgstr "Wir haben leider im Moment Probleme damit, das Payment Gateway zu erreichen. Wir möchten uns für alle eventuelle Unannehmlichkeiten entschuldigen."
+
+#: mcash-woocommerce-gateway.php:54
+#@ mcash-woocommerce
+msgid "Settings"
+msgstr "Einstellungen"
+
