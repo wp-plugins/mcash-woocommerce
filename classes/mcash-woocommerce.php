@@ -65,8 +65,6 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
         add_action('woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ));
         add_action('woocommerce_receipt_' . $this->id, array( $this, 'mcash_payment_portal' ));
         add_action('woocommerce_thankyou_' . $this->id, array( $this, 'mcash_return_handler' ));
-        add_action('init', array( $this, 'load_plugin_textdomain' ));
-
         
         if ($this->logging ) {
             if (empty( $this->log ) ) {
@@ -88,14 +86,7 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
             $this->testbed_token
         );
     }
-
     
-    public function load_plugin_textdomain() 
-    {
-        $domain = 'mcash-woocommerce';
-        load_plugin_textdomain($domain, false, dirname(plugin_basename(__FILE__)).'/languages/');
-    }
-
     function url_origin($s, $use_forwarded_host=false)
     {
         $ssl = (!empty($s['HTTPS']) && $s['HTTPS'] == 'on') ? true:false;

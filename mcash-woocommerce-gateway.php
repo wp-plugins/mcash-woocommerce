@@ -44,6 +44,10 @@ function mcash_woocommerce_init()
         $payment_gateway = new Mcash_Woocommerce();
         $payment_gateway->manually_capture_payment($order);
     }
+
+    $domain = 'mcash-woocommerce';
+    load_plugin_textdomain($domain, false, dirname(plugin_basename(__FILE__)) . '/languages/');
+ 
 }
  
 // Add custom action links
