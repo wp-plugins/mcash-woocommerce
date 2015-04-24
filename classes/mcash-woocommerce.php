@@ -394,7 +394,16 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
         }
         $mcash_refund_id++;
         update_post_meta($order_id, 'mcash_refund_counter', $mcash_refund_id);
-        return $this->mcash_client->refund_payment($mcash_tid, $mcash_refund_id, $amount, $reason);
+        $result = $this->mcash_client->refund_payment($mcash_tid, $mcash_refund_id, $amount, $reason);
+        if($result['status'] == 204) {
+            return true;
+        }
+
+        if($result['data']->error_description) {
+            return new WP_Error( 'mcash_woocommerce', $result['data']->error_description);
+        }
+        
+        return false;
     }
 
 

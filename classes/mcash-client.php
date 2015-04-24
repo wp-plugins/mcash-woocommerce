@@ -118,14 +118,10 @@ AwIDAQAB
                 'additional_amount' => '0.00',
                 'text'              => $text
             );
-            $result = $this->mcash_merchant_call(
+            return $this->mcash_merchant_call(
                 $method, $url, $payload, $this->mid,
                 $this->uid, $this->priv_key, $this->sslverify
             );
-            if($result['status'] == 204) {
-                return true;
-            }
-            return false;
         }
     
         function mcash_merchant_call($method, $url, $payload, $mid, $uid, $priv_key, $sslverify)
