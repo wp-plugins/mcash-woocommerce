@@ -16,9 +16,9 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
     function __construct() 
     {
         $this->id = "mcash";
-        $this->method_title = __("mCASH", 'mcash-woocommerce');
-        $this->method_description = __("mCASH Payment Gateway Plug-in for WooCommerce", 'mcash-woocommerce');
-        $this->title = __("mCASH", 'mcash-woocommerce');
+        $this->method_title = __("mCASH", 'mcash-woocommerce-gateway');
+        $this->method_description = __("mCASH Payment Gateway Plug-in for WooCommerce", 'mcash-woocommerce-gateway');
+        $this->title = __("mCASH", 'mcash-woocommerce-gateway');
         $this->init();
     }
     
@@ -161,85 +161,85 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
         
         $this->form_fields = array(
             'enabled' => array(
-                'title'     => __('Enable / Disable', 'mcash-woocommerce'),
-                'label'     => __('Enable this payment gateway', 'mcash-woocommerce'),
+                'title'     => __('Enable / Disable', 'mcash-woocommerce-gateway'),
+                'label'     => __('Enable this payment gateway', 'mcash-woocommerce-gateway'),
                 'type'      => 'checkbox',
                 'default'   => 'no',
             ),
             'title' => array(
-                'title'       => __('Title', 'mcash-woocommerce'),
+                'title'       => __('Title', 'mcash-woocommerce-gateway'),
                 'type'        => 'text',
-                'description' => __('Payment title the customer will see during the checkout process.', 'mcash-woocommerce'),
+                'description' => __('Payment title the customer will see during the checkout process.', 'mcash-woocommerce-gateway'),
                 'default'     => $this->method_title,
             ),
             'description' => array(
-                'title'       => __('Description', 'mcash-woocommerce'),
+                'title'       => __('Description', 'mcash-woocommerce-gateway'),
                 'type'        => 'textarea',
-                'description' => __('Payment description the customer will see during the checkout process.', 'mcash-woocommerce'),
-                'default'     => sprintf(__('Pay with %s', 'mcash-woocommerce'), $this->method_title),
+                'description' => __('Payment description the customer will see during the checkout process.', 'mcash-woocommerce-gateway'),
+                'default'     => sprintf(__('Pay with %s', 'mcash-woocommerce-gateway'), $this->method_title),
                 'css'         => 'max-width:350px;'
             ),
             'mid' => array(
-                'title'     => __('merchant id', 'mcash-woocommerce'),
+                'title'     => __('merchant id', 'mcash-woocommerce-gateway'),
                 'type'      => 'text',
-                'description'  => sprintf(__('This is the merchant id that was provided by mcash.no when you signed up for an account at %shttps://my.mca.sh/mssp/%s .', 'mcash-woocommerce'), '<a href="https://my.mca.sh/mssp/">', '</a>'),
+                'description'  => sprintf(__('This is the merchant id that was provided by mcash.no when you signed up for an account at %shttps://my.mca.sh/mssp/%s .', 'mcash-woocommerce-gateway'), '<a href="https://my.mca.sh/mssp/">', '</a>'),
             ),
             'uid' => array(
-                'title'     => __('merchant user id', 'mcash-woocommerce'),
+                'title'     => __('merchant user id', 'mcash-woocommerce-gateway'),
                 'type'      => 'text',
-                'description'  => sprintf(__('The merchant user created by you at %shttps://my.mca.sh/mssp/%s .', 'mcash-woocommerce'), '<a href="https://my.mca.sh/mssp/">', '</a>'),
+                'description'  => sprintf(__('The merchant user created by you at %shttps://my.mca.sh/mssp/%s .', 'mcash-woocommerce-gateway'), '<a href="https://my.mca.sh/mssp/">', '</a>'),
             ),
             'generate_new_rsa_keys' => array(
-                'title'     => __('Generate new RSA keys', 'mcash-woocommerce'),
-                'label'     => __('Generate new RSA keys', 'mcash-woocommerce'),
+                'title'     => __('Generate new RSA keys', 'mcash-woocommerce-gateway'),
+                'label'     => __('Generate new RSA keys', 'mcash-woocommerce-gateway'),
                 'type'      => 'checkbox',
-                'description'  => sprintf(__('If set to "yes", new keys will be generated, and you need to copy the public key to %shttps://my.mca.sh/mssp/%s .', 'mcash-woocommerce'), '<a href="https://my.mca.sh/mssp/">', '</a>'),
+                'description'  => sprintf(__('If set to "yes", new keys will be generated, and you need to copy the public key to %shttps://my.mca.sh/mssp/%s .', 'mcash-woocommerce-gateway'), '<a href="https://my.mca.sh/mssp/">', '</a>'),
                 'default'   => 'yes',
             ),
             'priv_key' => array(
-                'title'     => __('Private RSA key', 'mcash-woocommerce'),
+                'title'     => __('Private RSA key', 'mcash-woocommerce-gateway'),
                 'type'      => 'textarea',
-                'description'  => __('Your private RSA key. Keep it secret.', 'mcash-woocommerce'),
+                'description'  => __('Your private RSA key. Keep it secret.', 'mcash-woocommerce-gateway'),
                 'css'       => 'max-width:600px; height: 350px;'
             ),
             'pub_key' => array(
-                'title'     => __('Public RSA key', 'mcash-woocommerce'),
+                'title'     => __('Public RSA key', 'mcash-woocommerce-gateway'),
                 'type'      => 'textarea',
-                'description'  => sprintf(__('Your public RSA key. Copy this to the corresponding field for your merchant user at %shttps://my.mca.sh/mssp/%s .', 'mcash-woocommerce'), '<a href="https://my.mca.sh/mssp/">', '</a>'),
+                'description'  => sprintf(__('Your public RSA key. Copy this to the corresponding field for your merchant user at %shttps://my.mca.sh/mssp/%s .', 'mcash-woocommerce-gateway'), '<a href="https://my.mca.sh/mssp/">', '</a>'),
                 'css'       => 'max-width:600px; height: 120px;'
             ),
             'autocapture' => array(
-                'title'     => __('autocapture', 'mcash-woocommerce'),
-                'label'     => __('Capture an authorized payment automatically', 'mcash-woocommerce'),
+                'title'     => __('autocapture', 'mcash-woocommerce-gateway'),
+                'label'     => __('Capture an authorized payment automatically', 'mcash-woocommerce-gateway'),
                 'type'      => 'checkbox',
-                'description' => __('Capture an authorized payment automatically. If not set, capture needs to be done in the order view.', 'mcash-woocommerce'),
+                'description' => __('Capture an authorized payment automatically. If not set, capture needs to be done in the order view.', 'mcash-woocommerce-gateway'),
                 'default'   => 'yes',
             ),
             'testmode' => array(
-                'title'     => __('Test Mode', 'mcash-woocommerce'),
-                'label'     => __('Enable Test Mode', 'mcash-woocommerce'),
+                'title'     => __('Test Mode', 'mcash-woocommerce-gateway'),
+                'label'     => __('Enable Test Mode', 'mcash-woocommerce-gateway'),
                 'type'      => 'checkbox',
-                'description' => __('Place the payment gateway in test mode.', 'mcash-woocommerce'),
+                'description' => __('Place the payment gateway in test mode.', 'mcash-woocommerce-gateway'),
                 'default'   => 'no',
             ),
             'logging' => array(
-                'title'     => __('Log Mode', 'mcash-woocommerce'),
-                'label'     => __('Enable logging', 'mcash-woocommerce'),
+                'title'     => __('Log Mode', 'mcash-woocommerce-gateway'),
+                'label'     => __('Enable logging', 'mcash-woocommerce-gateway'),
                 'type'      => 'checkbox',
                 'default'   => 'no',
             ),
             'testbed_token' => array(
-                'title'     => __('testbed_token', 'mcash-woocommerce'),
+                'title'     => __('testbed_token', 'mcash-woocommerce-gateway'),
                 'type'      => 'text',
-                'description'  => sprintf(__('When using mCASH %stest environment%s , this token needs to be set', 'mcash-woocommerce'), '<a href="https://mcashtestbed.appspot.com/testbed/">', '</a>'),
+                'description'  => sprintf(__('When using mCASH %stest environment%s , this token needs to be set', 'mcash-woocommerce-gateway'), '<a href="https://mcashtestbed.appspot.com/testbed/">', '</a>'),
                 'disabled'  =>  ( $this->get_option('testmode', 'no') == 'no' ) ? true : false,
             ),
             'test_server' => array(
-                'title'     => __('test_server', 'mcash-woocommerce'),
+                'title'     => __('test_server', 'mcash-woocommerce-gateway'),
                 'type'      => 'text',
                 'default'   => 'https://mcashtestbed.appspot.com',
                 'disabled'  => ( $this->get_option('testmode', 'no') == 'no' ) ? true : false,
-                'description'  =>  __('Only concerns developers', 'mcash-woocommerce')
+                'description'  =>  __('Only concerns developers', 'mcash-woocommerce-gateway')
             ),
             
         );      
@@ -279,7 +279,7 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
             parent::admin_options();
         } else {
             ?>
-         <div class="inline error"><p><strong><?php _e('Gateway Disabled', 'mcash-woocommerce'); ?></strong>: <?php _e('mCASH does not support your store currency.', 'mcash-woocommerce'); ?></p></div>
+         <div class="inline error"><p><strong><?php _e('Gateway Disabled', 'mcash-woocommerce-gateway'); ?></strong>: <?php _e('mCASH does not support your store currency.', 'mcash-woocommerce-gateway'); ?></p></div>
             <?php
         }
     }
@@ -335,14 +335,14 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
         $mcash_tid = get_post_meta($order->id, 'mcash_tid', true);
         
         if ($this->mcash_client->capture_payment($mcash_tid) ) {
-            $order->add_order_note(__('mCASH manual capture completed', 'mcash-woocommerce'));
+            $order->add_order_note(__('mCASH manual capture completed', 'mcash-woocommerce-gateway'));
             //$order->payment_complete( $mcash_tid ); //This seems to cause an infinity loop
             add_post_meta($order->id, '_transaction_id', $mcash_tid, true);
             add_post_meta($order->id, '_paid_date', current_time('mysql'), true);
             return true;
         } 
-        $order->add_order_note(__('mCASH manual capture failed', 'mcash-woocommerce'));
-        $order->update_status('failed', __('mCASH manual capture failed', 'mcash-woocommerce'));
+        $order->add_order_note(__('mCASH manual capture failed', 'mcash-woocommerce-gateway'));
+        $order->update_status('failed', __('mCASH manual capture failed', 'mcash-woocommerce-gateway'));
         return false;
     }
 
@@ -422,15 +422,15 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
             $mcash_tid = get_post_meta($order->id, 'mcash_tid', true);
             update_post_meta($order_id, 'payment_status', $outcome->status);
             if ($outcome->status == 'auth' ) {
-                $order->update_status('processing', __('mCASH payment status : auth ', 'mcash-woocommerce'));
+                $order->update_status('processing', __('mCASH payment status : auth ', 'mcash-woocommerce-gateway'));
                 if ($this->autocapture == 'yes' ) {
                     if ($this->mcash_client->capture_payment($mcash_tid) ) {
-                        $order->add_order_note(__('mCASH automatic capture completed', 'mcash-woocommerce'));
+                        $order->add_order_note(__('mCASH automatic capture completed', 'mcash-woocommerce-gateway'));
                         $order->payment_complete($mcash_tid); // After we do this, we cannot do $order->add_order_note()
                         return true;
                     } 
-                    $order->add_order_note(__('mCASH automatic capture failed', 'mcash-woocommerce'));
-                    $order->update_status('failed', __('mCASH capture failed', 'mcash-woocommerce'));
+                    $order->add_order_note(__('mCASH automatic capture failed', 'mcash-woocommerce-gateway'));
+                    $order->update_status('failed', __('mCASH capture failed', 'mcash-woocommerce-gateway'));
                     return false;
                 }
             }
@@ -453,7 +453,7 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
             add_query_arg('wc-api', 'mcash_woocommerce', home_url('/')) //mcash_woocommerce_callback()
         );
         if (!$result ) {
-            throw new Exception(__('We are currently experiencing problems trying to connect to this payment gateway. Sorry for the inconvenience.', 'mcash-woocommerce'));
+            throw new Exception(__('We are currently experiencing problems trying to connect to this payment gateway. Sorry for the inconvenience.', 'mcash-woocommerce-gateway'));
         }
         update_post_meta($order->id, 'mcash_tid', $result->id);
         return $result;

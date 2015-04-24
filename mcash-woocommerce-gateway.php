@@ -8,6 +8,11 @@
   License: The MIT License (MIT)
 */
 
+add_action('init', 'mcash_woocommerce_real_init', 0);
+function mcash_woocommerce_real_init() {
+    $domain = 'mcash-woocommerce-gateway';
+    load_plugin_textdomain($domain, false, dirname(plugin_basename(__FILE__)) . '/languages/');
+}
 
 // Include our Gateway Class and register Payment Gateway with WooCommerce
 add_action('plugins_loaded', 'mcash_woocommerce_init', 0);
@@ -45,9 +50,7 @@ function mcash_woocommerce_init()
         $payment_gateway->manually_capture_payment($order);
     }
 
-    $domain = 'mcash-woocommerce';
-    load_plugin_textdomain($domain, false, dirname(plugin_basename(__FILE__)) . '/languages/');
- 
+
 }
  
 // Add custom action links
@@ -55,7 +58,7 @@ add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'mcash_woocommerc
 function mcash_woocommerce_action_links( $links ) 
 {
     $plugin_links = array(
-        '<a href="' . admin_url('admin.php?page=wc-settings&tab=checkout') . '">' . __('Settings', 'mcash-woocommerce') . '</a>',
+        '<a href="' . admin_url('admin.php?page=wc-settings&tab=checkout') . '">' . __('Settings', 'mcash-woocommerce-gateway') . '</a>',
     );
  
     // Merge our new link with the default ones
