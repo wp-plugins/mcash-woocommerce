@@ -248,7 +248,7 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
                 'type'      => 'text',
                 'default'   => 'https://mcashtestbed.appspot.com',
                 'disabled'  => ( $this->get_option('testmode', 'no') == 'no' ) ? true : false,
-                'description'  =>  __('Only concerns developers')
+                'description'  =>  __('Only concerns developers', 'mcash-woocommerce')
             ),
             
         );      
