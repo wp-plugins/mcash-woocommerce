@@ -3,7 +3,7 @@
   Plugin Name: mCASH - WooCommerce Gateway
   Plugin URI: http://www.mcash.no
   Description: Extends WooCommerce by Adding mCASH Gateway.
-  Version: 0.1
+  Version: 0.2
   Author: mCASH AS
   License: The MIT License (MIT)
 */

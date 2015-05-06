@@ -2,7 +2,7 @@
 Tags: woocommerce, payment, gateway
 Requires at least: 4.1.1
 Tested up to: 4.1.1
-Stable tag: 0.1
+Stable tag: 0.2
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 WC requires at least: 2.2
@@ -46,6 +46,10 @@ The user guide and frequently asked questions can be found at https://github.com
 == Screenshots ==
 
 == Changelog ==
+
+= 0.2 =
+* Fix for php 5.3
+* Fix for apache removing Authorization header
 
 = 0.1 =
 * First early adopter release. Tested on WooCommerce
