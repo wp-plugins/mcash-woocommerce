@@ -72,8 +72,7 @@ Dzsubiwvn5QzYKx3I8T9rJ2IzAGGFsfNFVcvFCXoOtI=
         $method = 'POST';
         $payload = '';
         $url = 'https://something.com';
-        $json_payload = ( $payload =='' ) ? '' :
-                      json_encode($payload, JSON_UNESCAPED_SLASHES);
+        $json_payload = ( $payload =='' ) ? '' : json_encode($payload);
 
         $headers = array(
             'Accept'                 => 'application/vnd.mcash.api.merchant.v1+json',
@@ -120,8 +119,7 @@ Dzsubiwvn5QzYKx3I8T9rJ2IzAGGFsfNFVcvFCXoOtI=
             )
         );
         $url = 'https://something.com';
-        $json_payload = ( $payload =='' ) ? '' :
-                      json_encode($payload, JSON_UNESCAPED_SLASHES);
+        $json_payload = ( $payload =='' ) ? '' : json_encode($payload);
 
         $headers = array(
             'Accept'                 => 'application/vnd.mcash.api.merchant.v1+json',

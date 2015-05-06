@@ -126,8 +126,7 @@ AwIDAQAB
     
         function mcash_merchant_call($method, $url, $payload, $mid, $uid, $priv_key, $sslverify)
         {
-            
-            $json_payload = ( $payload =='' ) ? '' : json_encode($payload, JSON_UNESCAPED_SLASHES);
+            $json_payload = ( $payload =='' ) ? '' : json_encode($payload);
             $headers = array(
                 'Accept'                 => 'application/vnd.mcash.api.merchant.v1+json',
                 'Content-Type'           => 'application/json',
