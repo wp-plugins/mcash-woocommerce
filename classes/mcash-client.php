@@ -1,8 +1,8 @@
 <?php
 
 
-if(!class_exists('mcash_client')) {
-    class mcash_client
+if(!class_exists('Mcash_Client')) {
+    class Mcash_Client
     {
 
         const MCASH_PUB_KEY_PROD = '-----BEGIN PUBLIC KEY-----
@@ -51,12 +51,14 @@ AwIDAQAB
         }
         
         function payment_request($success_return_uri,
-            $failure_return_uri,
-            $amount,
-            $currency,
-            $text,
-            $pos_tid,
-            $callback_uri
+                                 $failure_return_uri,
+                                 $amount,
+                                 $currency,
+                                 $text,
+                                 $pos_tid,
+                                 $pos_id,
+                                 $callback_uri,
+                                 $required_scope=null
         ) {
             $url = $this->mcash_server . "/merchant/v1/payment_request/";
             $payload = array(
@@ -65,12 +67,16 @@ AwIDAQAB
                 'amount'             => $amount,
                 'currency'           => $currency,
                 'text'               => $text,
-                'pos_id'             => 'default',
+                'pos_id'             => $pos_id,
                 'pos_tid'            => $pos_tid,
                 'allow_credit'       => true,
                 'action'             => 'sale',
                 'callback_uri'       => $callback_uri
             );
+
+            if(!is_null($required_scope)) {
+                $payload['required_scope'] = $required_scope;
+            }
             
             $result = $this->mcash_merchant_call(
                 'POST', $url, $payload, $this->mid,
@@ -273,6 +279,7 @@ AwIDAQAB
             
             $calc_payload_digest = $this->contentDigest($json_payload);
             $this->log('valid_signature() $valid = ' . print_r($valid, true));
+            $this->log('valid_signature() $data = ' . $data);
             $this->log('valid_signature() $calc_payload_digest = ' . $calc_payload_digest);
             $this->log('valid_signature() X-Mcash-Content-Digest = ' .  $headers['X-Mcash-Content-Digest']);
 
@@ -289,5 +296,30 @@ AwIDAQAB
             return false;
         }
         
-    }
+    
+        public function getallheaders()
+        { 
+            foreach($_SERVER as $K=>$V){$a=explode('_' ,$K); 
+                if(array_shift($a)=='HTTP'){ 
+                    array_walk($a,function(&$v){$v=ucfirst(strtolower($v));});
+                    $retval[join('-',$a)]=$V;
+                }
+            }
+            if(isset($_SERVER['CONTENT_TYPE'])) $retval['Content-Type'] = $_SERVER['CONTENT_TYPE'];
+            if(isset($_SERVER['CONTENT_LENGTH'])) $retval['Content-Length'] = $_SERVER['CONTENT_LENGTH'];
+            return $retval;
+        }
+        
+        public function request_headers()
+        {
+            if( function_exists('apache_request_headers') ) {
+                $this->log('mCASH request_headers() apache_request_headers() is defined.');
+                return apache_request_headers();
+            } else {
+                $this->log('mCASH  request_headers() apache_request_headers() is not defined. Using fallback');
+                return $this->getallheaders();
+            }
+        }
+        
+    }   
 }

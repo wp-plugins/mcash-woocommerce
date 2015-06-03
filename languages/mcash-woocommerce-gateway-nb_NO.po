@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: mCASH - WooCommerce Gateway v0.1\n"
+"Project-Id-Version: mCASH - WooCommerce Gateway v0.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-04-22 15:00:26+0000\n"
+"PO-Revision-Date: 2015-05-27 14:39:50+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: mcash-woocommerce-gateway.php:58
+#: mcash-woocommerce-gateway.php:75
 #@ mcash-woocommerce-gateway
 msgid "Settings"
 msgstr "Innstillinger"
@@ -36,207 +36,285 @@ msgstr "mCASH"
 msgid "mCASH Payment Gateway Plug-in for WooCommerce"
 msgstr "mCASH Payment Gateway Plug-in for WooCommerce"
 
-#: classes/mcash-woocommerce.php:164
+#: classes/mcash-express-woocommerce.php:48
+#: classes/mcash-woocommerce.php:178
 #@ mcash-woocommerce-gateway
 msgid "Enable / Disable"
 msgstr "Aktiver / deaktiver"
 
-#: classes/mcash-woocommerce.php:165
+#: classes/mcash-express-woocommerce.php:49
+#: classes/mcash-woocommerce.php:179
 #@ mcash-woocommerce-gateway
 msgid "Enable this payment gateway"
 msgstr "Aktiver denne payment gateway"
 
-#: classes/mcash-woocommerce.php:170
+#: classes/mcash-express-woocommerce.php:54
+#: classes/mcash-woocommerce.php:184
 #@ mcash-woocommerce-gateway
 msgid "Title"
 msgstr "Tittel"
 
-#: classes/mcash-woocommerce.php:172
+#: classes/mcash-express-woocommerce.php:56
+#: classes/mcash-woocommerce.php:186
 #@ mcash-woocommerce-gateway
 msgid "Payment title the customer will see during the checkout process."
 msgstr "Betaling tittel kunden vil se i løpet av betalingsprosessen."
 
-#: classes/mcash-woocommerce.php:176
+#: classes/mcash-express-woocommerce.php:60
+#: classes/mcash-woocommerce.php:190
 #@ mcash-woocommerce-gateway
 msgid "Description"
 msgstr "Beskrivelse"
 
-#: classes/mcash-woocommerce.php:178
+#: classes/mcash-express-woocommerce.php:62
+#: classes/mcash-woocommerce.php:192
 #@ mcash-woocommerce-gateway
 msgid "Payment description the customer will see during the checkout process."
 msgstr "Betaling beskrivelse kunden vil se i løpet av betalingsprosessen."
 
-#: classes/mcash-woocommerce.php:183
+#: classes/mcash-express-woocommerce.php:74
+#: classes/mcash-woocommerce.php:197
 #@ mcash-woocommerce-gateway
 msgid "merchant id"
 msgstr "merchant id"
 
-#: classes/mcash-woocommerce.php:185
+#: classes/mcash-express-woocommerce.php:76
+#: classes/mcash-woocommerce.php:199
 #, php-format
 #@ mcash-woocommerce-gateway
 msgid "This is the merchant id that was provided by mcash.no when you signed up for an account at %shttps://my.mca.sh/mssp/%s ."
 msgstr "Dette er merchant id som ble levert av mcash.no når du registrerte deg for en konto på"
 
-#: classes/mcash-woocommerce.php:188
+#: classes/mcash-express-woocommerce.php:79
+#: classes/mcash-woocommerce.php:202
 #@ mcash-woocommerce-gateway
 msgid "merchant user id"
 msgstr "merchant user id"
 
-#: classes/mcash-woocommerce.php:190
+#: classes/mcash-express-woocommerce.php:81
+#: classes/mcash-woocommerce.php:204
 #, php-format
 #@ mcash-woocommerce-gateway
 msgid "The merchant user created by you at %shttps://my.mca.sh/mssp/%s ."
 msgstr "Merchant bruker opprettet av deg på"
 
-#: classes/mcash-woocommerce.php:219
+#: classes/mcash-express-woocommerce.php:110
+#: classes/mcash-woocommerce.php:233
 #@ mcash-woocommerce-gateway
 msgid "Test Mode"
 msgstr "Test Mode"
 
-#: classes/mcash-woocommerce.php:220
+#: classes/mcash-express-woocommerce.php:111
+#: classes/mcash-woocommerce.php:234
 #@ mcash-woocommerce-gateway
 msgid "Enable Test Mode"
 msgstr "Aktiver test mode"
 
-#: classes/mcash-woocommerce.php:222
+#: classes/mcash-express-woocommerce.php:113
+#: classes/mcash-woocommerce.php:236
 #@ mcash-woocommerce-gateway
 msgid "Place the payment gateway in test mode."
 msgstr "Plasser betaling gateway i test mode"
 
-#: classes/mcash-woocommerce.php:193
-#: classes/mcash-woocommerce.php:194
+#: classes/mcash-express-woocommerce.php:84
+#: classes/mcash-express-woocommerce.php:85
+#: classes/mcash-woocommerce.php:207
+#: classes/mcash-woocommerce.php:208
 #@ mcash-woocommerce-gateway
 msgid "Generate new RSA keys"
 msgstr "Generere nye RSA-nøkler"
 
-#: classes/mcash-woocommerce.php:196
+#: classes/mcash-express-woocommerce.php:87
+#: classes/mcash-woocommerce.php:210
 #, php-format
 #@ mcash-woocommerce-gateway
 msgid "If set to \"yes\", new keys will be generated, and you need to copy the public key to %shttps://my.mca.sh/mssp/%s ."
 msgstr "Hvis satt til \"yes\", nye nøkler vil bli generert, og du må kopiere den offentlige nøkkelen til %shttps://my.mca.sh/mssp/%s ."
 
-#: classes/mcash-woocommerce.php:200
+#: classes/mcash-express-woocommerce.php:91
+#: classes/mcash-woocommerce.php:214
 #@ mcash-woocommerce-gateway
 msgid "Private RSA key"
 msgstr "Privat RSA nøkkel"
 
-#: classes/mcash-woocommerce.php:202
+#: classes/mcash-express-woocommerce.php:93
+#: classes/mcash-woocommerce.php:216
 #@ mcash-woocommerce-gateway
 msgid "Your private RSA key. Keep it secret."
 msgstr "Din private RSA nøkkel. Holde det hemmelig."
 
-#: classes/mcash-woocommerce.php:206
+#: classes/mcash-express-woocommerce.php:97
+#: classes/mcash-woocommerce.php:220
 #@ mcash-woocommerce-gateway
 msgid "Public RSA key"
 msgstr "Publik RSA nøkkel"
 
-#: classes/mcash-woocommerce.php:208
+#: classes/mcash-express-woocommerce.php:99
+#: classes/mcash-woocommerce.php:222
 #, php-format
 #@ mcash-woocommerce-gateway
 msgid "Your public RSA key. Copy this to the corresponding field for your merchant user at %shttps://my.mca.sh/mssp/%s ."
 msgstr "Din publik RSA nøkkel. Kopier denne til det tilsvarende feltet for din merchant user på %shttps://my.mca.sh/mssp/%s ."
 
-#: classes/mcash-woocommerce.php:212
+#: classes/mcash-express-woocommerce.php:103
+#: classes/mcash-woocommerce.php:226
 #@ mcash-woocommerce-gateway
 msgid "autocapture"
 msgstr "autocapture"
 
-#: classes/mcash-woocommerce.php:213
+#: classes/mcash-express-woocommerce.php:104
+#: classes/mcash-woocommerce.php:227
 #@ mcash-woocommerce-gateway
 msgid "Capture an authorized payment automatically"
 msgstr ""
 
-#: classes/mcash-woocommerce.php:215
-#@ mcash-woocommerce-gateway
-msgid "Capture an authorized payment automatically. If not set, capture needs to be done in the order view."
-msgstr ""
-
-#: classes/mcash-woocommerce.php:282
+#: classes/mcash-woocommerce.php:296
 #@ mcash-woocommerce-gateway
 msgid "Gateway Disabled"
 msgstr "Gateway deaktivert"
 
-#: classes/mcash-woocommerce.php:282
+#: classes/mcash-woocommerce.php:296
 #@ mcash-woocommerce-gateway
 msgid "mCASH does not support your store currency."
 msgstr "mCASH støtter ikke butikken din valuta."
 
-#: classes/mcash-woocommerce.php:338
+#: classes/mcash-woocommerce.php:358
 #@ mcash-woocommerce-gateway
 msgid "mCASH manual capture completed"
 msgstr "mCASH manuell capture fullført"
 
-#: classes/mcash-woocommerce.php:344
-#: classes/mcash-woocommerce.php:345
+#: classes/mcash-woocommerce.php:364
+#: classes/mcash-woocommerce.php:365
 #@ mcash-woocommerce-gateway
 msgid "mCASH manual capture failed"
 msgstr "mCASH manuell capture mislyktes"
 
-#: classes/mcash-woocommerce.php:363
+#: classes/mcash-woocommerce.php:383
 #, php-format
 #@ default
 msgid "<strong>%s</strong> is enabled and WooCommerce is not forcing the SSL certificate on your checkout page. Please ensure that you have a valid SSL certificate and that you are <a href=\"%s\">forcing the checkout pages to be secured.</a>"
 msgstr "<strong>%s</strong> er aktivert og WooCommerce er ikke presser SSL-sertifikatet på kassen. Sørg for at du har en gyldig SSL-sertifikat og at du er <a href=\"%s\"> tvinge kassa sider som skal sikres"
 
-#: classes/mcash-woocommerce.php:425
+#: classes/mcash-woocommerce.php:475
 #@ mcash-woocommerce-gateway
 msgid "mCASH payment status : auth "
 msgstr "mCASH betalingsstatus : auth "
 
-#: classes/mcash-woocommerce.php:428
+#: classes/mcash-woocommerce.php:478
 #@ mcash-woocommerce-gateway
 msgid "mCASH automatic capture completed"
 msgstr "mCASH automatisk capture fullført"
 
-#: classes/mcash-woocommerce.php:432
+#: classes/mcash-woocommerce.php:482
 #@ mcash-woocommerce-gateway
 msgid "mCASH automatic capture failed"
 msgstr "mCASH automatisk capture mislyktes"
 
-#: classes/mcash-woocommerce.php:433
+#: classes/mcash-woocommerce.php:483
 #@ mcash-woocommerce-gateway
 msgid "mCASH capture failed"
 msgstr "mCASH capture mislyktes"
 
-#: classes/mcash-woocommerce.php:456
-#@ mcash-woocommerce-gateway
+#: classes/mcash-woocommerce.php:508
+#@ default
 msgid "We are currently experiencing problems trying to connect to this payment gateway. Sorry for the inconvenience."
 msgstr "Vi opplever for tiden problemer med å koble seg til denne payment gateway. Beklager det inntrufne."
 
-#: classes/mcash-woocommerce.php:179
+#: classes/mcash-express-woocommerce.php:63
+#: classes/mcash-woocommerce.php:193
 #, php-format
 #@ mcash-woocommerce-gateway
 msgid "Pay with %s"
-msgstr ""
+msgstr "Betal med %s"
 
-#: classes/mcash-woocommerce.php:226
+#: classes/mcash-express-woocommerce.php:117
+#: classes/mcash-woocommerce.php:240
 #@ mcash-woocommerce-gateway
 msgid "Log Mode"
-msgstr ""
+msgstr "Logg-modus"
 
-#: classes/mcash-woocommerce.php:227
+#: classes/mcash-express-woocommerce.php:118
+#: classes/mcash-woocommerce.php:241
 #@ mcash-woocommerce-gateway
 msgid "Enable logging"
-msgstr ""
+msgstr "Slå på logging"
 
-#: classes/mcash-woocommerce.php:232
+#: classes/mcash-express-woocommerce.php:123
+#: classes/mcash-woocommerce.php:246
 #@ mcash-woocommerce-gateway
 msgid "testbed_token"
-msgstr ""
+msgstr "testbed_token"
 
-#: classes/mcash-woocommerce.php:234
+#: classes/mcash-express-woocommerce.php:125
+#: classes/mcash-woocommerce.php:248
 #, php-format
 #@ mcash-woocommerce-gateway
 msgid "When using mCASH %stest environment%s , this token needs to be set"
-msgstr ""
+msgstr "Denne verdien må være satt når du bruker mCASH %stest-miljø%s"
 
-#: classes/mcash-woocommerce.php:238
+#: classes/mcash-express-woocommerce.php:129
+#: classes/mcash-woocommerce.php:252
 #@ mcash-woocommerce-gateway
 msgid "test_server"
-msgstr ""
+msgstr "test_server"
 
-#: classes/mcash-woocommerce.php:242
+#: classes/mcash-express-woocommerce.php:133
+#: classes/mcash-woocommerce.php:256
 #@ mcash-woocommerce-gateway
 msgid "Only concerns developers"
-msgstr ""
+msgstr "Gjelder bare utviklere"
+
+#: classes/mcash-express-woocommerce.php:23
+#: classes/mcash-express-woocommerce.php:25
+#@ mcash-woocommerce
+msgid "mCASH Express"
+msgstr "mCASH Express"
+
+#: classes/mcash-express-woocommerce.php:24
+#@ mcash-woocommerce
+msgid "mCASH Express Payment Gateway Plug-in for WooCommerce. Please notice that this needs free shipping."
+msgstr "mCASH Express Payment Gateway Plug-in for WooCommerce. Vær obs på at denne forutsetter gratis frakt."
+
+#: classes/mcash-express-woocommerce.php:67
+#: classes/mcash-express-woocommerce.php:68
+#@ mcash-woocommerce-gateway
+msgid "Copy values from mCASH plugin settings"
+msgstr "Kopier verdier fra mCASH plugin-innstillinger"
+
+#: classes/mcash-express-woocommerce.php:70
+#@ mcash-woocommerce-gateway
+msgid "If set to \"yes\", merchant id, merchant user id, key pair will be copied from mCASH plugin settings."
+msgstr "Hvis satt til \"yes\", må merchant id, merchant user id og nøkkelpar kopieres over fra mCASH plugin-innstillinger."
+
+#: classes/mcash-express-woocommerce.php:106
+#: classes/mcash-woocommerce.php:229
+#@ mcash-woocommerce-gateway
+msgid "Capture an authorized payment automatically. If not set, capture needs to be done in the order view within 72 hours, else the auth will expire and the money will be refunded."
+msgstr "Gjør 'capture' på autoriserte betalinger automatisk. Når denne funksjonen er slått av må capture gjøres manuelt på ordren innen 72 timer, hvis ikke går autorisasjonen ut og pengene blir refundert."
+
+#: classes/mcash-express-woocommerce.php:136
+#@ mcash-woocommerce-gateway
+msgid "Cart Page"
+msgstr "Handlekurv-siden"
+
+#: classes/mcash-express-woocommerce.php:139
+#@ paypal-for-woocommerce
+msgid "Display at the top of page."
+msgstr "Vis på toppen av siden."
+
+#: classes/mcash-express-woocommerce.php:140
+#@ paypal-for-woocommerce
+msgid "Display at the bottom of page."
+msgstr "Vis i bunnen av siden."
+
+#: classes/mcash-express-woocommerce.php:142
+#: classes/mcash-express-woocommerce.php:148
+#@ default
+msgid "Display the express button on page"
+msgstr "Vis Express-knappen på siden"
+
+#: classes/mcash-express-woocommerce.php:145
+#@ mcash-woocommerce-gateway
+msgid "Checkout Page"
+msgstr "Kasse-siden"
 

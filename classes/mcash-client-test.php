@@ -8,7 +8,7 @@
 require  'mcash-client.php' ;
 
 
-class mcash_client_test extends PHPUnit_Framework_TestCase
+class Mcash_Client_Test extends PHPUnit_Framework_TestCase
 {
         const PUB_KEY = '-----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCfUDv8nt/RVvTdQ3sbgvz/j1L1
@@ -55,7 +55,7 @@ Dzsubiwvn5QzYKx3I8T9rJ2IzAGGFsfNFVcvFCXoOtI=
     function test_mcash_client_sign_empty_payload() 
     {
 
-        $client = new mcash_client(
+        $client = new Mcash_Client(
             null,
             "https://api.mca.sh",
             'mid',
@@ -97,7 +97,7 @@ Dzsubiwvn5QzYKx3I8T9rJ2IzAGGFsfNFVcvFCXoOtI=
     function test_mcash_client_sign() 
     {
 
-        $client = new mcash_client(
+        $client = new Mcash_Client(
             null,
             "https://api.mca.sh",
             'mid',

@@ -2,7 +2,7 @@
 Tags: woocommerce, payment, gateway
 Requires at least: 4.1.1
 Tested up to: 4.1.1
-Stable tag: 0.2
+Stable tag: 0.3
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 WC requires at least: 2.2
@@ -35,7 +35,7 @@ Provides a mCASH payment gateway for WooCommerce.
 
 = How to get an mCASH Merchant account =
 
-Sign up for an account at https://my.mca.sh/mssp/signup/
+Sign up for an account at https://my.mca.sh/mssp/signup/ . Create a merchant and a merchant user (not only a legal entity).
 
 
 = Where do I find the plugin Documentation & FAQ ? =
@@ -46,6 +46,9 @@ The user guide and frequently asked questions can be found at https://github.com
 == Screenshots ==
 
 == Changelog ==
+
+= 0.3 =
+* Added mCASH Express
 
 = 0.2 =
 * Fix for php 5.3

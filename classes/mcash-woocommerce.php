@@ -75,7 +75,7 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
         }
         
         include_once  'mcash-client.php' ;
-        $this->mcash_client = new mcash_client(
+        $this->mcash_client = new Mcash_Client(
             $this->log,
             $this->mcash_server,
             $this->mid,
@@ -125,22 +125,24 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
             header('HTTP/1.1 400 Bad Request');
             exit;
         }
-        
-        if ( function_exists('getallheaders') ) 
-        {
-            $this->log('mcash_woocommerce_callback() getallheaders start');
-            $headers = getallheaders();
-            $this->log('mcash_woocommerce_callback() headers = ' . print_r($headers, true));
-            // apache removes mCASH Authorization header if conf wrong, since it is not basic auth format
+
+        if ( false ) {
+            // If signature is correct, then call to outcome is not needed. Saves time.
+            // Re-add later.
+            $headers = $this->mcash_client->request_headers();
             if ( array_key_exists('Authorization', $headers) )
             {
+                $this->log('mCASH validateSignature() Authorization header present');
                 if (! $this->mcash_client->valid_signature($method, $uri, $headers, $body) ){
                     header('HTTP/1.1 401 Unauthorized');
                     exit;
                 }
+            } else {
+                $this->log('mCASH Authorization header is not in http basic authentication format, and will be discarded by apache, if apache is not configured accordingly');
+                // Makes no diffrence yet. At the moment we always make a call to mCASH anyway.
             }
         }
-
+        
         if ($payload->meta->id ) {
             $this->get_payment_outcome($payload->meta->uri);
             header('HTTP/1.1 204 No Content');
@@ -164,6 +166,7 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
             $settings['priv_key'] = $keyPair['privKey'];
         }
         update_option($this->plugin_id . $this->id . '_settings', $settings);
+        $this->log('process_admin_options() ' . $this->plugin_id . $this->id . '_settings');
     }
 
     
@@ -223,7 +226,7 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
                 'title'     => __('autocapture', 'mcash-woocommerce-gateway'),
                 'label'     => __('Capture an authorized payment automatically', 'mcash-woocommerce-gateway'),
                 'type'      => 'checkbox',
-                'description' => __('Capture an authorized payment automatically. If not set, capture needs to be done in the order view.', 'mcash-woocommerce-gateway'),
+                'description' => __('Capture an authorized payment automatically. If not set, capture needs to be done in the order view within 72 hours, else the auth will expire and the money will be refunded.', 'mcash-woocommerce-gateway'),
                 'default'   => 'yes',
             ),
             'testmode' => array(
@@ -309,10 +312,16 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
     
     function mcash_payment_portal($order_id)
     {
-        $url = $this->payment_request($order_id)->uri;
-        ?>
-        <script type="text/javascript">top.location.href='<?php echo $url; ?>'</script>
-        <?php
+        $return = $this->payment_request($order_id);
+        $this->log('mcash_payment_portal() order_id = ' . $order_id . ' $return = ' . print_r($return, true));
+        if( is_wp_error( $return ) ) {
+            $this->log('mcash_payment_portal() order_id = ' . $order_id . ' error_message = ' . $return->get_error_message());
+            echo $return->get_error_message();
+        }else {
+            ?>
+            <script type="text/javascript">top.location.href='<?php echo $return->uri; ?>'</script>
+            <?php
+        }
     }
 
     
@@ -421,8 +430,8 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
     function get_payment_outcome($uri) 
     {
         $this->log('get_payment_outcome() uri = ' . $uri);
-        if (!$this->testmode && ! $this->startsWith($uri, $this->mcash_server)) {
-            $this->log('get_payment_outcome() uri = ' . $uri . ' does not start with' . $this->mcash_server);
+        if (!$this->testmode && ! $this->startsWith($uri, $this->mcash_server . '/')) {
+            $this->log('get_payment_outcome() uri = ' . $uri . ' does not start with' . $this->mcash_server . '/');
             return false;
         }
         
@@ -441,7 +450,30 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
             }
             $mcash_tid = get_post_meta($order->id, 'mcash_tid', true);
             update_post_meta($order_id, 'payment_status', $outcome->status);
-            if ($outcome->status == 'auth' ) {
+            if ( ($order_payment_method == 'mcash_express') && (
+                ($outcome->status == 'auth' ) || ( ( $outcome->status == 'ok' ) && ( get_post_meta($order->id, '_billing_phone', true) == '' ))
+            )){
+                $this->log('get_payment_outcome() outcome = ' . print_r($outcome, true));
+                $scope_data = $outcome->permissions->user_info->email;
+                update_post_meta($order_id, '_billing_email',   $outcome->permissions->user_info->email);
+                update_post_meta($order_id, '_billing_phone',   $outcome->permissions->user_info->phone_number);
+                $shipping_full_name = $outcome->permissions->user_info->shipping_address->name;
+                $pieces = explode(" ", $shipping_full_name);
+                if( count($pieces) === 2 ) {
+                    update_post_meta($order_id, '_shipping_first_name',  $pieces[0]);
+                    update_post_meta($order_id, '_shipping_last_name',   $pieces[1]);
+                }else{
+                    update_post_meta($order_id, '_shipping_first_name', '');
+                    update_post_meta($order_id, '_shipping_last_name',   $shipping_full_name);
+                    }
+                update_post_meta($order_id, '_shipping_full_name',   $shipping_full_name);
+                update_post_meta($order_id, '_shipping_address_1',  $outcome->permissions->user_info->shipping_address->street_address);
+                update_post_meta($order_id, '_shipping_city',       $outcome->permissions->user_info->shipping_address->locality);
+                update_post_meta($order_id, '_shipping_postcode',   $outcome->permissions->user_info->shipping_address->postal_code);
+                update_post_meta($order_id, '_shipping_country',    $outcome->permissions->user_info->shipping_address->country);
+            }
+            
+            if ($outcome->status == 'auth' ) {                
                 $order->update_status('processing', __('mCASH payment status : auth ', 'mcash-woocommerce-gateway'));
                 if ($this->autocapture == 'yes' ) {
                     if ($this->mcash_client->capture_payment($mcash_tid) ) {
@@ -458,9 +490,9 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
         } 
         return false;
     }
+    
 
-
-    function payment_request($order_id)
+    function payment_request($order_id, $required_scope=null)
     {
         $order = wc_get_order($order_id);
         $result = $this->mcash_client->payment_request(
@@ -470,10 +502,12 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
             get_woocommerce_currency(),
             $this->order_description($order),
             strval($order_id),
-            add_query_arg('wc-api', 'mcash_woocommerce', home_url('/')) //mcash_woocommerce_callback()
+            $this->id,
+            add_query_arg('wc-api', 'mcash_woocommerce', home_url('/')), //mcash_woocommerce_callback()
+            $required_scope
         );
         if (!$result ) {
-            throw new Exception(__('We are currently experiencing problems trying to connect to this payment gateway. Sorry for the inconvenience.', 'mcash-woocommerce-gateway'));
+            return new WP_Error( 'mcash_woocommerce', __('We are currently experiencing problems trying to connect to this payment gateway. Sorry for the inconvenience.'));
         }
         update_post_meta($order->id, 'mcash_tid', $result->id);
         return $result;

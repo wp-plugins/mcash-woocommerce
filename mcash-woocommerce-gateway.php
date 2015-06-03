@@ -3,7 +3,7 @@
   Plugin Name: mCASH - WooCommerce Gateway
   Plugin URI: http://www.mcash.no
   Description: Extends WooCommerce by Adding mCASH Gateway.
-  Version: 0.2
+  Version: 0.3
   Author: mCASH AS
   License: The MIT License (MIT)
 */
@@ -51,6 +51,20 @@ function mcash_woocommerce_init()
     }
 
 
+    // If we made it this far, then include our Gateway Class
+    include_once  'classes/mcash-express-woocommerce.php' ;
+    
+    // Now that we have successfully included our class,
+    // Lets add it too WooCommerce
+    add_filter('woocommerce_payment_gateways', 'add_mcash_express_woocommerce_gateway');
+    function add_mcash_express_woocommerce_gateway( $methods ) 
+    {
+        $methods[] = 'Mcash_Express_Woocommerce';
+        return $methods;
+    }
+        
+    add_action('woocommerce_before_cart', array('Mcash_Express_Woocommerce', 'mcash_express_cart_button_top'), 14);
+        
 }
  
 // Add custom action links
