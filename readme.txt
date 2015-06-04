@@ -1,12 +1,12 @@
 === mcash-woocommerce ===
 Tags: woocommerce, payment, gateway
-Requires at least: 4.1.1
-Tested up to: 4.1.1
-Stable tag: 0.3
+Requires at least: 4.0 or higher
+Tested up to: 4.2.2
+Stable tag: 0.4
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 WC requires at least: 2.2
-WC tested up to: 2.3
+WC tested up to: 2.3.10
 
 Provides a mCASH payment gateway for WooCommerce.
 
@@ -46,6 +46,9 @@ The user guide and frequently asked questions can be found at https://github.com
 == Screenshots ==
 
 == Changelog ==
+
+= 0.4 =
+* Fixed faulty html and added banner and icon
 
 = 0.3 =
 * Added mCASH Express

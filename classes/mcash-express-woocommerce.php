@@ -238,13 +238,11 @@ class Mcash_Express_Woocommerce extends Mcash_Woocommerce
         global $mcash_express_settings;
         $payment_gateways = WC()->payment_gateways->get_available_payment_gateways();
         if (isset( $payment_gateways['mcash_express'] ) && WC()->cart->total > (float) @$mcash_express_settings['min_amount']) {
-            echo '<div class="clear"></div>';
             echo '<div id="mcash_express_button">';
             echo '<a class="mcash_express_button" href="' . add_query_arg('action', 'expresscheckout', add_query_arg('wc-api', get_class(), home_url('/'))) . '">';
             echo '<img width="194" height="44" alt="mCASH Express" src="' . WP_PLUGIN_URL . "/" . plugin_basename(dirname(dirname(__FILE__))) . @$mcash_express_settings['btn_picture'] . '">';
             echo "</a>";
             echo '</div>';
-            echo "<div class='clear'></div></div>";
         }
     }
 
@@ -255,13 +253,11 @@ class Mcash_Express_Woocommerce extends Mcash_Woocommerce
         global $mcash_express_settings;
         $payment_gateways = WC()->payment_gateways->get_available_payment_gateways();
         if (isset( $payment_gateways['mcash_express'] ) && (WC()->cart->total > (float) @$mcash_express_settings['min_amount']) && @$mcash_express_settings['show_on_cart']=='top') { 
-            echo '<div class="clear"></div>';
             echo '<div id="mcash_express_button">';
             echo '<a class="mcash_express_button" href="' . add_query_arg('action', 'expresscheckout', add_query_arg('wc-api', get_class(), home_url('/'))) . '">';
             echo '<img width="194" height="44" alt="mCASH Express" src="' . WP_PLUGIN_URL . "/" . plugin_basename(dirname(dirname(__FILE__))) . @$mcash_express_settings['btn_picture'] . '">';
             echo "</a>";
             echo '</div>';
-            echo "<div class='clear'></div></div>";
         }
     }
 
