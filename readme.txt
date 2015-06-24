@@ -14,6 +14,9 @@ Provides a mCASH payment gateway for WooCommerce.
 
 Provides a mCASH payment gateway for WooCommerce.
 
+[ ![Image](/assets/screenshot_phone_shop.png "phone shop") ](https://drive.google.com/file/d/0B-QveKJnncYyMk8xM2dibGZ0UXc/view?usp=sharing "screencast")
+
+
 == Installation ==
 
 = the hard way =
