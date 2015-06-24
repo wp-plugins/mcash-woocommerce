@@ -34,6 +34,7 @@ Only availble for Norwegian residents.
 4. Activate the plugin by Clicking on 'Activate Plugin'
 5. Goto the WooCommerce->Settings->Checkout->mCASH->Settings to get started.
 
+[youtube https://www.youtube.com/watch?v=SeGFEo9SFv0]
 
 == Frequently Asked Questions ==
 
