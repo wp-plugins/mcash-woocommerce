@@ -2,7 +2,7 @@
 Tags: woocommerce, payment, gateway
 Requires at least: 4.0 or higher
 Tested up to: 4.2.2
-Stable tag: 0.4
+Stable tag: 0.5
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 WC requires at least: 2.2
@@ -49,6 +49,10 @@ The user guide and frequently asked questions can be found at https://github.com
 == Screenshots ==
 
 == Changelog ==
+
+= 0.5 =
+* Fix for including tax on payment request text
+* Fix for when scope is not ready when payment ok
 
 = 0.4 =
 * Fixed faulty html and added banner and icon

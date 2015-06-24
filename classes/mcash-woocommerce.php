@@ -144,9 +144,13 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
         }
         
         if ($payload->meta->id ) {
-            $this->get_payment_outcome($payload->meta->uri);
-            header('HTTP/1.1 204 No Content');
-            exit;
+            if( $this->get_payment_outcome($payload->meta->uri) ){
+                header('HTTP/1.1 204 No Content');
+                exit;
+            } else {
+                header('HTTP/1.1 503 Service Unavailable');
+                exit;               
+            }
         }
 
         header('HTTP/1.1 400 Bad Request');
@@ -333,12 +337,15 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
     
     function order_description($order)
     {
+        $this->log('order_description() order = ' . print_r($order, true));
         $text = "";
         if (sizeof($order->get_items()) > 0 ) {
             foreach ( $order->get_items() as $item ) {
-                $text = $text . $item['qty'] . "\t" . $item['name'] . "\t" . wc_format_decimal($item['line_subtotal'], 2) . "\n";
-            } 
+                $this->log('order_description() item = ' . print_r($item, true));
+                $text = $text . $item['qty'] . "\t" . $item['name'] . "\t" . wc_format_decimal($item['line_subtotal'] + $item['line_subtotal_tax'], 2) . "\n";
+            }
         }
+        $this->log('order_description() text = ' . $text);
         return $text;
     }
 
@@ -450,9 +457,23 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
             }
             $mcash_tid = get_post_meta($order->id, 'mcash_tid', true);
             update_post_meta($order_id, 'payment_status', $outcome->status);
-            if ( ($order_payment_method == 'mcash_express') && (
-                ($outcome->status == 'auth' ) || ( ( $outcome->status == 'ok' ) && ( get_post_meta($order->id, '_billing_phone', true) == '' ))
-            )){
+            if ( ($order_payment_method == 'mcash_express') && ($outcome->status == 'auth' ) ){
+                if (!$outcome->permissions->user_info->shipping_address ){
+                    $maxTries = 5;
+                    for ($try=1; $try<=$maxTries; $try++) {
+                        sleep(1);
+                        $this->log('no scope in outcome, trying again ..');
+                        $result = $this->mcash_client->payment_outcome($mcash_tid);
+                        $outcome = $result['data'];
+                        if ($outcome->permissions->user_info->shipping_address) {
+                            break;
+                        }
+                    }
+                    if (!$outcome->permissions->user_info->shipping_address ){
+                        $this->log('outcome not updated with scopes yet. Respond with 5xx and let the callback retry.');
+                        return false;
+                    }
+                }
                 $this->log('get_payment_outcome() outcome = ' . print_r($outcome, true));
                 $scope_data = $outcome->permissions->user_info->email;
                 update_post_meta($order_id, '_billing_email',   $outcome->permissions->user_info->email);
@@ -483,11 +504,11 @@ class Mcash_Woocommerce extends WC_Payment_Gateway
                     } 
                     $order->add_order_note(__('mCASH automatic capture failed', 'mcash-woocommerce-gateway'));
                     $order->update_status('failed', __('mCASH capture failed', 'mcash-woocommerce-gateway'));
-                    return false;
+                    return true;
                 }
             }
             return true;
-        } 
+        }
         return false;
     }
     
