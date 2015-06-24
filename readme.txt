@@ -14,7 +14,7 @@ Provides a mCASH payment gateway for WooCommerce.
 
 Provides a mCASH payment gateway for WooCommerce.
 
-[youtube https://youtu.be/oMzxN6S5-lM]
+[youtube https://www.youtube.com/watch?v=oMzxN6S5-lM]
 
 Only availble for Norwegian residents.
 
